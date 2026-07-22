@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Task } from './task';
 
@@ -17,6 +17,8 @@ export class App {
     { id: 3, titulo: 'Dominar signals', completada: true },
   ]);
 
+  pendientes = computed(() => this.tareas().filter((t) => !t.completada).length);
+
   agregar(titulo: string): void {
     const limpio = titulo.trim();
     if (!limpio) {
@@ -27,6 +29,10 @@ export class App {
       ...lista,
       { id: Date.now(), titulo: limpio, completada: false },
     ]);
+  }
+
+  eliminar(id: number): void {
+    this.tareas.update((lista) => lista.filter((t) => t.id !== id));
   }
 
   toggle(id: number): void {
