@@ -35,40 +35,26 @@ h1 {
   cursor: pointer;
 }
 
-.tabla-contenedor {
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 0.6rem 0.75rem;
   border: 1px solid #eee;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 0.65rem 0.75rem;
-  border-bottom: 1px solid #f1f1f1;
-  text-align: left;
-}
-
-thead th {
-  position: sticky;
-  top: 0;
-  background: #fff;
-  z-index: 1;
-}
-
-tbody tr {
+  border-radius: 6px;
+  margin-bottom: 0.4rem;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
-tbody tr:hover {
+li:hover {
   background: #fafafa;
 }
 
-.hecha td:first-child {
+.hecha {
   text-decoration: line-through;
   opacity: 0.6;
 }
@@ -77,47 +63,4 @@ tbody tr:hover {
   cursor: default;
   color: #999;
   text-align: center;
-}
-
-.paginador {
-  margin-top: 0.75rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.tamano-pagina {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.tamano-pagina select {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 0.3rem 0.45rem;
-  background: white;
-}
-
-.paginador button {
-  border: none;
-  border-radius: 6px;
-  padding: 0.4rem 0.75rem;
-  background: #d81b60;
-  color: white;
-  cursor: pointer;
-}
-
-.paginador button:disabled {
-  background: #e9a2be;
-  cursor: not-allowed;
-}
-
-.paginador span {
-  color: #666;
-  font-size: 0.9rem;
 }

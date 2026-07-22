@@ -13,46 +13,19 @@
     <button (click)="agregar(inputTarea.value); inputTarea.value = ''">Agregar</button>
   </div>
 
-  <div class="tabla-contenedor">
-    <table>
-      <thead>
-        <tr>
-          <th>Tarea</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (tarea of tareasVisibles(); track tarea.id) {
-          <tr (click)="toggle(tarea.id)" [class.hecha]="tarea.completada">
-            <td>{{ tarea.titulo }}</td>
-            <td>{{ tarea.completada ? 'Hecha' : 'Pendiente' }}</td>
-            <td>
-              <button class="eliminar" (click)="eliminar(tarea.id); $event.stopPropagation()">🗑️</button>
-            </td>
-          </tr>
-        } @empty {
-          <tr>
-            <td colspan="3" class="vacio">No hay tareas. Agrega una!!</td>
-          </tr>
+  <ul>
+    @for (tarea of tareas(); track tarea.id) {
+      <li (click)="toggle(tarea.id)" [class.hecha]="tarea.completada">
+        {{ tarea.titulo }}
+        @if (tarea.completada) {
+          <span>✅</span>
         }
-      </tbody>
-    </table>
-  </div>
-
-  <div class="paginador">
-    <label class="tamano-pagina">
-      Registros por pagina
-      <select [value]="pageSize()" (change)="cambiarTamanoPagina($any($event.target).value)">
-        @for (opcion of pageSizeOptions; track opcion) {
-          <option [value]="opcion">{{ opcion }}</option>
-        }
-      </select>
-    </label>
-    <button (click)="paginaAnterior()" [disabled]="currentPage() === 1">Anterior</button>
-    <span>Pagina {{ currentPage() }} de {{ totalPaginas() }}</span>
-    <button (click)="paginaSiguiente()" [disabled]="currentPage() === totalPaginas()">Siguiente</button>
-  </div>
+        <button class="eliminar" (click)="eliminar(tarea.id); $event.stopPropagation()">🗑️</button>
+      </li>
+    } @empty {
+      <li>No hay tareas. Agrega una!!</li>
+    }
+  </ul>
 </main>
 
 <router-outlet />
