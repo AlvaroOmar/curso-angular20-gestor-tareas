@@ -1,26 +1,26 @@
 <main>
   <h1>{{ title }}</h1>
-  <p class="contador">Pendientes: {{ pendientes() }}</p>
+  <p class="contador">Pendientes: {{ tasksService.pendientes() }}</p>
 
   <div class="nueva-tarea">
     <input
       type="text"
       #inputTarea
       placeholder="Nueva Tarea"
-      (keyup.enter)="agregar(inputTarea.value); inputTarea.value = ''"
+      (keyup.enter)="tasksService.agregar(inputTarea.value); inputTarea.value = ''"
     />
 
-    <button (click)="agregar(inputTarea.value); inputTarea.value = ''">Agregar</button>
+    <button (click)="tasksService.agregar(inputTarea.value); inputTarea.value = ''">Agregar</button>
   </div>
 
   <ul>
-    @for (tarea of tareas(); track tarea.id) {
-      <li (click)="toggle(tarea.id)" [class.hecha]="tarea.completada">
+    @for (tarea of tasksService.tareas(); track tarea.id) {
+      <li (click)="tasksService.toggle(tarea.id)" [class.hecha]="tarea.completada">
         {{ tarea.titulo }}
         @if (tarea.completada) {
           <span>✅</span>
         }
-        <button class="eliminar" (click)="eliminar(tarea.id); $event.stopPropagation()">🗑️</button>
+        <button class="eliminar" (click)="tasksService.eliminar(tarea.id); $event.stopPropagation()">🗑️</button>
       </li>
     } @empty {
       <li>No hay tareas. Agrega una!!</li>
