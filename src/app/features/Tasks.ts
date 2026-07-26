@@ -8,6 +8,7 @@ export class TasksService {
 	tareas = signal<Task[]>(this.cargarTareas());
 
 	pendientes = computed(() => this.tareas().filter((t) => !t.completada).length);
+	completadas = computed(() => this.tareas().filter((t) => t.completada).length);
 
 	agregar(titulo: string): void {
 		const limpio = titulo.trim();
@@ -31,6 +32,11 @@ export class TasksService {
 		this.tareas.update((lista) =>
 			lista.map((t) => (t.id === id ? { ...t, completada: !t.completada } : t)),
 		);
+		this.guardarTareas();
+	}
+
+	limpiarCompletadas(): void {
+		this.tareas.update((lista) => lista.filter((t) => !t.completada));
 		this.guardarTareas();
 	}
 

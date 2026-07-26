@@ -11,6 +11,9 @@
     />
 
     <button (click)="tasksService.agregar(inputTarea.value); inputTarea.value = ''">Agregar</button>
+    <button (click)="tasksService.limpiarCompletadas()" [disabled]="tasksService.completadas() === 0">
+      Limpiar tareas completadas
+    </button>
   </div>
 
   <ul>
