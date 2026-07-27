@@ -11,22 +11,23 @@
     />
 
     <button (click)="tasksService.agregar(inputTarea.value); inputTarea.value = ''">Agregar</button>
-    <button (click)="tasksService.limpiarCompletadas()" [disabled]="tasksService.completadas() === 0">
+    <button
+      (click)="tasksService.limpiarCompletadas()"
+      [disabled]="tasksService.completadas() === 0"
+    >
       Limpiar tareas completadas
     </button>
   </div>
 
   <ul>
     @for (tarea of tasksService.tareas(); track tarea.id) {
-      <li (click)="tasksService.toggle(tarea.id)" [class.hecha]="tarea.completada">
-        {{ tarea.titulo }}
-        @if (tarea.completada) {
-          <span>✅</span>
-        }
-        <button class="eliminar" (click)="tasksService.eliminar(tarea.id); $event.stopPropagation()">🗑️</button>
-      </li>
+    <app-task-item
+      [task]="tarea"
+      (toggle)="tasksService.toggle($event)"
+      (removed)="tasksService.eliminar($event)"
+    />
     } @empty {
-      <li>No hay tareas. Agrega una!!</li>
+    <li>No hay tareas. Agrega una!!</li>
     }
   </ul>
 </main>
