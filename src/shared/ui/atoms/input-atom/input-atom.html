@@ -1,0 +1,7 @@
+<input
+  type="text"
+  [value]="value()"
+  [placeholder]="placeholder()"
+  (input)="onInput($event)"
+  (keyup.enter)="enterPressed.emit()"
+/>

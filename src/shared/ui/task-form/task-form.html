@@ -1,4 +1,9 @@
 <div class="task-form">
-  <input type="text" #inputTarea placeholder="Nueva Tarea..." (keyup)="onKeyUpEnter($event)" />
-  <button (click)="agregarTarea()">Agregar</button>
+  <app-input-atom
+    [value]="titulo"
+    placeholder="Nueva Tarea..."
+    (valueChange)="titulo = $event"
+    (enterPressed)="agregarTarea()"
+  ></app-input-atom>
+  <app-button-atom label="Agregar" minWidth="10.5rem" (pressed)="agregarTarea()"></app-button-atom>
 </div>
