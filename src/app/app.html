@@ -3,14 +3,7 @@
   <p class="contador">Pendientes: {{ tasksService.pendientes() }}</p>
 
   <div class="nueva-tarea">
-    <input
-      type="text"
-      #inputTarea
-      placeholder="Nueva Tarea"
-      (keyup.enter)="tasksService.agregar(inputTarea.value); inputTarea.value = ''"
-    />
-
-    <button (click)="tasksService.agregar(inputTarea.value); inputTarea.value = ''">Agregar</button>
+    <app-task-form (agregado)="tasksService.agregar($event)" />
     <button
       (click)="tasksService.limpiarCompletadas()"
       [disabled]="tasksService.completadas() === 0"

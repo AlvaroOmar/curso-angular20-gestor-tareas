@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TasksService } from './features/Tasks';
 import { TaskItem } from '../shared/ui/task-item/task-item';
+import { TaskForm } from '../shared/ui/task-form/task-form';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TaskItem],
+  imports: [RouterOutlet, TaskItem, TaskForm],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
