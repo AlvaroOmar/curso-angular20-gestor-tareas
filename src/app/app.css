@@ -64,3 +64,21 @@ li:hover {
   color: #999;
   text-align: center;
 }
+
+.cargar {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d81b60;
+  border-radius: 6px;
+  background: transparent;
+  color: #d81b60;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.estado {
+  color: #666;
+}
+
+.error {
+  color: #c62828;
+}
