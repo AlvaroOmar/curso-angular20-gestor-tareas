@@ -2,7 +2,6 @@ import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-button-atom',
-  standalone: true,
   imports: [],
   templateUrl: './button-atom.html',
   styleUrl: './button-atom.css',
